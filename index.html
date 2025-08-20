@@ -19,10 +19,28 @@
       margin-bottom: 40px;
     }
 
-    header h1 {
-      font-size: 50px;
-      color: hotpink;
+    .birthday-title {
+      font-size: 60px;
+      font-weight: bold;
+      background: linear-gradient(90deg, hotpink, violet, deeppink);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s ease-in-out infinite, sparkle 4s linear infinite;
+      text-shadow: 0 0 10px rgba(255, 105, 180, 0.6),
+                   0 0 20px rgba(255, 182, 193, 0.6);
       margin: 20px 0;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px hotpink, 0 0 20px violet; }
+      50% { text-shadow: 0 0 20px deeppink, 0 0 40px hotpink; }
+      100% { text-shadow: 0 0 10px hotpink, 0 0 20px violet; }
+    }
+
+    @keyframes sparkle {
+      0% { letter-spacing: 2px; }
+      50% { letter-spacing: 5px; }
+      100% { letter-spacing: 2px; }
     }
 
     /* Side GIFs */
@@ -131,7 +149,7 @@
 </head>
 <body>
   <header>
-    <h1>HELLO KITTY</h1>
+    <h1 class="birthday-title">HAPPY 18TH BIRTHDAY MARY</h1>
   </header>
 
   <!-- Side GIFs -->
