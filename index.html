@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: pink;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: relative;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 50px;
+      color: hotpink;
+      margin: 20px 0;
+    }
+
+    /* Side GIFs */
+    .side-gifs {
+      position: fixed;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .side-gifs img {
+      width: 100px;
+    }
+    .side-left {
+      left: 10px;
+    }
+    .side-right {
+      right: 10px;
+    }
+
+    button {
+      background: hotpink;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 20px;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .photo {
+      display: none;
+      margin: 15px auto;
+      width: 250px;
+      border: 5px solid hotpink;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+
+    .photo-message {
+      display: none;
+      background: white;
+      border-radius: 15px;
+      margin: 10px auto;
+      padding: 15px;
+      max-width: 350px;
+      font-size: 16px;
+      position: relative;
+    }
+
+    .close-btn {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      color: hotpink;
+      cursor: pointer;
+    }
+
+    .music-controls {
+      margin: 20px 0;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background: #fff0f5;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .message {
+      background: #ffe6f2;
+      padding: 20px;
+      border-radius: 20px;
+      max-width: 600px;
+      margin: 20px auto;
+      font-size: 18px;
+    }
+
+    .kitty-center {
+      margin: 20px auto;
+      display: block;
+      width: 150px;
+    }
+
+    /* Floating Balloons */
+    .balloon {
+      position: fixed;
+      bottom: -150px;
+      width: 60px;
+      animation: floatUp 10s infinite ease-in;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HELLO KITTY</h1>
+  </header>
+
+  <!-- Side GIFs -->
+  <div class="side-gifs side-left">
+    <img src="hello-kitty.gif" alt="Hello Kitty">
+    <img src="kuromi-kitty.gif" alt="Kuromi Kitty">
+    <img src="hello-kitty.gif" alt="Hello Kitty">
+    <img src="kuromi-kitty.gif" alt="Kuromi Kitty">
+    <img src="hello-kitty.gif" alt="Hello Kitty">
+  </div>
+
+  <div class="side-gifs side-right">
+    <img src="kuromi-kitty.gif" alt="Kuromi Kitty">
+    <img src="hello-kitty.gif" alt="Hello Kitty">
+    <img src="kuromi-kitty.gif" alt="Kuromi Kitty">
+    <img src="hello-kitty.gif" alt="Hello Kitty">
+    <img src="kuromi-kitty.gif" alt="Kuromi Kitty">
+  </div>
+
+  <!-- Music controls -->
+  <div class="music-controls">
+    <audio id="bgMusic" loop>
+      <source src="your-music.mp3" type="audio/mpeg">
+    </audio>
+    <button onclick="playMusic()">▶ Play Music</button>
+    <button onclick="pauseMusic()">⏸ Pause Music</button>
+  </div>
+
+  <!-- Kuromi-Kitty GIF under music -->
+  <img src="kuromi-kitty.gif" class="kitty-center" alt="Kuromi & Hello Kitty GIF">
+
+  <!-- 6 Memories -->
+  <div>
+    <button onclick="showPhoto('pic1')">💌 Open Memory 1</button>
+    <img id="pic1" src="pic1.jpg" class="photo" alt="Photo 1" onclick="toggleMessage('msg1')">
+    <div id="msg1" class="photo-message">
+      🎉 Happy 18th Birthday, my love! still pretty and cutie as always. 🌸
+      <span class="close-btn" onclick="toggleMessage('msg1')">❌ Close</span>
+    </div>
+  </div>
+
+  <div>
+    <button onclick="showPhoto('pic2')">💌 Open Memory 2</button>
+    <img id="pic2" src="pic2.jpg" class="photo" alt="Photo 2" onclick="toggleMessage('msg2')">
+    <div id="msg2" class="photo-message">
+      🎂 You’re officially 18 na langga!!! 🥳 May this year bring happiness, success, and endless love 
+      to you my loveydovey. 💕
+      <span class="close-btn" onclick="toggleMessage('msg2')">❌ Close</span>
+    </div>
+  </div>
+
+  <div>
+    <button onclick="showPhoto('pic3')">💌 Open Memory 3</button>
+    <img id="pic3" src="pic3.jpg" class="photo" alt="Photo 3" onclick="toggleMessage('msg3')">
+    <div id="msg3" class="photo-message">
+      💕 Thank you for filling my life with laughter and love even though we have our ups and downs
+      in life and us we will always have each other. 🌷 You make everything more lighter and brighter. 🌟
+      <span class="close-btn" onclick="toggleMessage('msg3')">❌ Close</span>
+    </div>
+  </div>
+
+  <div>
+    <button onclick="showPhoto('pic4')">💌 Open Memory 4</button>
+    <img id="pic4" src="pic4.jpg" class="photo" alt="Photo 4" onclick="toggleMessage('msg4')">
+    <div id="msg4" class="photo-message">
+      🌹 You’re not just my love or my langga or my loveydovey cutiepie, you’re my best friend, 
+      my safe place, and my one and only. 💝
+      <span class="close-btn" onclick="toggleMessage('msg4')">❌ Close</span>
+    </div>
+  </div>
+
+  <div>
+    <button onclick="showPhoto('pic5')">💌 Open Memory 5</button>
+    <img id="pic5" src="pic5.jpg" class="photo" alt="Photo 5" onclick="toggleMessage('msg5')">
+    <div id="msg5" class="photo-message">
+      ✨ No matter where life takes us, I’ll always be right here with you no matter the struggles.
+      gwapa dyud kaayo ka diri as in. 🌍
+      <span class="close-btn" onclick="toggleMessage('msg5')">❌ Close</span>
+    </div>
+  </div>
+
+  <div>
+    <button onclick="showPhoto('pic6')">💌 Open Memory 6</button>
+    <img id="pic6" src="pic6.jpg" class="photo" alt="Photo 6" onclick="toggleMessage('msg6')">
+    <div id="msg6" class="photo-message">
+      🌈 Here’s to more birthdays, memories, and love shared between the two ofus. 💫
+      <span class="close-btn" onclick="toggleMessage('msg6')">❌ Close</span>
+    </div>
+  </div>
+
+  <!-- Bottom Kuromi-Kitty GIF + final message -->
+  <img src="kuromi-kitty.gif" class="kitty-center" alt="Kuromi & Hello Kitty GIF">
+
+  <div class="message">
+    Happy Birthday, my dearest! 🎂💖<br><br>
+    You were the best thing that have ever happen to me, the smile and laughter that makes my day complete, and the heart that makes me feel at home. I’m beyond grateful to be with someone as loving, silly, sweet, and strong as you.<br><br>
+    Here's to more laughter, adventures, late-night talks, and memories with you. I’ll always be here cheering you on, holding your hand, and loving you endlessly. even if sometimes we fight or have misunderstanding we always have each others back.<br><br>
+    Enjoy your special day, my love. You deserve all the happiness in the world. 💕🎁🌷
+  </div>
+
+  <footer>
+    Made with love 💌 | Yours always RENZGWAPO ❤️
+  </footer>
+
+  <!-- Floating Balloons -->
+  <img src="balloon1.png" class="balloon" style="left: 10%; animation-delay: 0s;">
+  <img src="balloon2.png" class="balloon" style="left: 30%; animation-delay: 2s;">
+  <img src="balloon3.png" class="balloon" style="left: 50%; animation-delay: 4s;">
+  <img src="balloon4.png" class="balloon" style="left: 70%; animation-delay: 6s;">
+  <img src="balloon5.png" class="balloon" style="left: 90%; animation-delay: 8s;">
+
+  <!-- Scripts -->
+  <script>
+    function toggleMessage(id) {
+      const msg = document.getElementById(id);
+      msg.style.display = msg.style.display === 'block' ? 'none' : 'block';
+    }
+    function showPhoto(photoId) {
+      const img = document.getElementById(photoId);
+      img.style.display = "block";
+    }
+    const bgMusic = document.getElementById("bgMusic");
+    function playMusic() { bgMusic.play(); }
+    function pauseMusic() { bgMusic.pause(); }
+  </script>
+</body>
+</html>
